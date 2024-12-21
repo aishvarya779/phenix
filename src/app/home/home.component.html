@@ -1,2 +1,15 @@
-<p>home works!</p>
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<mat-form-field class="example-full-width">
+    <mat-label>Search Song</mat-label>
+    <input type="text" matInput  (change)="listSongs($event)"
+           placeholder="Search Song">
+  </mat-form-field>
+  <div class="songs-container">
+    @for (item of playList; track $index) {
+        <div class="song-item">
+            <img src="{{item.album.cover_medium}}" alt="">
+            <div>{{item.title}}</div>
+        </div>
+        
+    }
+  </div>
