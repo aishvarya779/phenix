@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PrfoileComponent } from './prfoile/prfoile.component';
+import { FormsComponent } from './forms/forms.component';
 export const routes: Routes = [
     {
         path: '',
@@ -14,6 +15,10 @@ export const routes: Routes = [
     {
         path: 'profile',
         component: PrfoileComponent
+    },
+    {
+        path:'forms',
+        component: FormsComponent
     },
     {
         path: '**',

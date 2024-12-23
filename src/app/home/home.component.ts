@@ -10,27 +10,42 @@ import {MatInputModule} from '@angular/material/input';
 })
 export class HomeComponent implements OnInit{
   playList: any[] = [];
+  nextPage: string = '';
+  options = {
+    method: 'GET',
+    headers: {
+      'x-rapidapi-key': 'cXI3nwKbIwmshrsTAl3q6f53EPiSp1XZRotjsnkqm7643CAiiD',
+      'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
+  };
   ngOnInit(): void {
     this.listSongs();
   }
   async listSongs(event?: any) {
     console.log(event);
     const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${event?.target.value || 'eminem'}`;
-const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': 'cXI3nwKbIwmshrsTAl3q6f53EPiSp1XZRotjsnkqm7643CAiiD',
-		'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com'
-	}
-};
+
 
 try {
-	const response = await fetch(url, options);
+	const response = await fetch(url, this.options);
 	const result = await response.json();
   this.playList = result.data;
 	console.log(result);
+  this.nextPage = result.next;
 } catch (error) {
 	console.error(error);
 }
+  }
+
+  async loadMore(){
+    try {
+      const response = await fetch(this.nextPage, this.options);
+      const result = await response.json();
+      this.playList = [...result.data, ...this.playList];
+      console.log(result);
+      this.nextPage = result.next;
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

@@ -1,0 +1,21 @@
+@use "@angular/material" as mat;
+
+.form-container {
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  .input-box {
+    display: flex;
+    flex: 25%;
+    // flex: 33% 33% 33%;
+    padding: 8px;
+    .form-field-container {
+      width: 100%;
+      @include mat.form-field-overrides(
+        (
+          filled-container-color: white,
+        )
+      );
+    }
+  }
+}

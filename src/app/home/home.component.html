@@ -8,8 +8,9 @@
     @for (item of playList; track $index) {
         <div class="song-item">
             <img src="{{item.album.cover_medium}}" alt="">
-            <div>{{item.title}}</div>
+            <div class="title">{{item.title}}</div>
         </div>
         
     }
   </div>
+  <button (click)="loadMore()">Load More</button>
