@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { PrfoileComponent } from './prfoile/prfoile.component';
-import { FormsComponent } from './forms/forms.component';
+import { ProductsComponent } from './products/products.component';
 export const routes: Routes = [
     {
         path: '',
@@ -10,15 +8,21 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        // component: HomeComponent
+        loadChildren: () => import('./home/home.component').then(m => m.HomeComponent)
     },
     {
         path: 'profile',
-        component: PrfoileComponent
+        loadComponent: () => import('./profile/profile.component').then(m => m.ProfileComponent)
     },
     {
         path:'forms',
-        component: FormsComponent
+        loadComponent: () => import('./forms/forms.component').then(m => m.FormsComponent)
+    },
+    {
+        path: 'products',
+        component: ProductsComponent,
+        loadChildren: () => import('./products/products.routes').then(m => m.prdocutsRoutes)
     },
     {
         path: '**',
