@@ -1,0 +1,1 @@
+import{Db as n,Eb as i,Wb as p,ib as t}from"./chunk-G2BD274O.js";var r=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-profile"]],decls:2,vars:0,template:function(e,a){e&1&&(n(0,"p"),p(1,"profile works!"),i())},encapsulation:2})};export{r as ProfileComponent};
